@@ -49,16 +49,13 @@ const CardExpenseSummary = () => {
         <div className="m-5">Loading...</div>
       ) : (
         <>
-          {/* HEADER */}
           <div>
             <h2 className="text-lg font-semibold mb-2 px-7 pt-5">
               Plugin Usage Summary
             </h2>
             <hr />
           </div>
-          {/* BODY */}
           <div className="xl:flex justify-between pr-7">
-            {/* CHART */}
             <div className="relative basis-3/5">
               <ResponsiveContainer width="100%" height={140}>
                 <PieChart>
@@ -87,7 +84,6 @@ const CardExpenseSummary = () => {
                 </span>
               </div>
             </div>
-            {/* LABELS */}
             <ul className="flex flex-col justify-around items-center xl:items-start py-5 gap-3">
               {expenseCategories.map((entry, index) => (
                 <li
@@ -103,7 +99,6 @@ const CardExpenseSummary = () => {
               ))}
             </ul>
           </div>
-          {/* FOOTER */}
           <div>
             <hr />
             {expenseSummary && (
