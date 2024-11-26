@@ -1,15 +1,15 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { SidebarPanelProps } from "../interface"; // Correct path for interface
 
-// Updated SidebarPanel component with correct type for icon
+import { SidebarPanelProps } from "../interface";
+
 export const SidebarPanel = ({
     href,
     icon: Icon,
     label,
     isCollapsed,
-    customClass = "py-4", // Default class
+    customClass = "py-4", 
 }: SidebarPanelProps & { customClass?: string }) => {
     const pathname = usePathname();
     const isActive =

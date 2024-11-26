@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import StoreProvider, { useAppSelector } from "./redux";
 
 import { Navbar } from "@/app/(components)/Navbar";
-import Sidebar from "@/app/(components)/Sidebar";// Default import (without curly braces)
+import Sidebar from "@/app/(components)/Sidebar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const isSidebarCollapsed = useAppSelector(

@@ -1,7 +1,7 @@
-// Sidebar.tsx
 "use client";
 
 import React from "react";
+
 import {
     Archive,
     CircleDollarSign,
@@ -10,6 +10,7 @@ import {
     SlidersHorizontal,
     User,
 } from "lucide-react";
+
 import { SidebarPanel } from "./SidebarPanel";
 
 interface SidebarProps {
@@ -29,7 +30,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) =>
 
     return (
         <div className="relative">
-            {/* Sidebar content */}
             <div
                 className={`fixed top-0 left-0 h-full bg-white shadow-md transition-transform duration-300 z-40 ${isSidebarVisible ? "translate-x-0" : "-translate-x-full"
                     } md:static md:translate-x-0 md:w-64 flex flex-col`}
@@ -78,7 +78,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) =>
                 </div>
             </div>
 
-            {/* Backdrop */}
             {isSidebarVisible && (
                 <div
                     className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
@@ -89,4 +88,4 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) =>
     );
 };
 
-export default Sidebar;  // Default export here
+export default Sidebar; 
