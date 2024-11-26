@@ -7,11 +7,13 @@ import {
   TrendingDown,
   TrendingUp,
 } from "lucide-react";
+
 import CardExpenseSummary from "./CardExpenseSummary";
 import CardPopularProducts from "./CardPopularProducts";
 import CardPurchaseSummary from "./CardPurchaseSummary";
 import CardSalesSummary from "./CardSalesSummary";
 import StatCard from "./StatCard";
+import Charts from "./Charts";
 
 const Dashboard = () => {
   return (
@@ -77,6 +79,10 @@ const Dashboard = () => {
           },
         ]}
       />
+      {/* Add Charts Component */}
+      <div className="col-span-1 md:col-span-2">
+        <Charts/>
+      </div>
     </div>
   );
 };

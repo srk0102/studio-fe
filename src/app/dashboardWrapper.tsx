@@ -1,10 +1,11 @@
+// DashboardLayout.tsx
 "use client";
 
 import React, { useEffect } from "react";
 import StoreProvider, { useAppSelector } from "./redux";
 
 import { Navbar } from "@/app/(components)/Navbar";
-import { Sidebar } from "@/app/(components)/Sidebar";
+import Sidebar from "@/app/(components)/Sidebar";// Default import (without curly braces)
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const isSidebarCollapsed = useAppSelector(
@@ -25,7 +26,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       className={`${isDarkMode ? "dark" : "light"
         } flex bg-gray-50 text-gray-900 w-full min-h-screen`}
     >
-      <Sidebar isCollapsed={false} isSidebarVisible={true} />
+      <Sidebar isSidebarVisible={true} toggleSidebar={() => { }} />  {/* Correct usage */}
       <main
         className={`flex flex-col w-full h-full py-7 px-9 bg-gray-50 ${isSidebarCollapsed ? "md:pl-24" : "md:pl-72"
           }`}

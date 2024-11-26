@@ -1,7 +1,7 @@
+// Sidebar.tsx
 "use client";
 
 import React from "react";
-
 import {
     Archive,
     CircleDollarSign,
@@ -10,16 +10,14 @@ import {
     SlidersHorizontal,
     User,
 } from "lucide-react";
-
 import { SidebarPanel } from "./SidebarPanel";
 
-export const Sidebar = ({
-    isCollapsed,
-    isSidebarVisible,
-}: {
-    isCollapsed: boolean;
+interface SidebarProps {
     isSidebarVisible: boolean;
-}) => {
+    toggleSidebar: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) => {
     const sidebarItems = [
         { href: "/dashboard", icon: LayoutIcon, label: "Dashboard" },
         { href: "/featured", icon: Archive, label: "Featured" },
@@ -30,39 +28,65 @@ export const Sidebar = ({
     ];
 
     return (
-        <div
-            className={`fixed top-0 left-0 h-full bg-white shadow-md transition-transform duration-300 z-40 ${isSidebarVisible ? "translate-x-0" : "-translate-x-full"
-                } md:static md:translate-x-0 md:w-64 flex flex-col`}
-        >
+        <div className="relative">
+            {/* Sidebar content */}
             <div
-                className={`flex gap-3 justify-between items-center pt-8 ${isCollapsed ? "px-5" : "px-8"
-                    }`}
+                className={`fixed top-0 left-0 h-full bg-white shadow-md transition-transform duration-300 z-40 ${isSidebarVisible ? "translate-x-0" : "-translate-x-full"
+                    } md:static md:translate-x-0 md:w-64 flex flex-col`}
+                style={{ height: "calc(100vh)" }}
             >
-                <h1
-                    className={`${isCollapsed ? "hidden" : "block"
-                        } font-extrabold text-2xl`}
-                >
-                    THE BREETH
-                </h1>
+                <div className="flex items-center justify-between gap-4 py-4 px-6">
+                    <h1 className="font-extrabold text-2xl">THE BREETH</h1>
+                    <button
+                        onClick={toggleSidebar}
+                        className="p-2 bg-gray-800 text-white rounded md:hidden"
+                        aria-label="Toggle Sidebar"
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                <div className="flex-grow mt-8">
+                    {sidebarItems.map((item) => (
+                        <SidebarPanel
+                            key={item.href}
+                            href={item.href}
+                            icon={item.icon}
+                            label={item.label}
+                            isCollapsed={!isSidebarVisible}
+                        />
+                    ))}
+                </div>
+
+                <div className="mt-auto mb-4">
+                    <p className="text-center text-xs text-gray-500">
+                        &copy; 2025 THE BREETH
+                    </p>
+                </div>
             </div>
 
-            <div className="flex-grow mt-8">
-                {sidebarItems.map((item) => (
-                    <SidebarPanel
-                        key={item.href}
-                        href={item.href}
-                        icon={item.icon}
-                        label={item.label}
-                        isCollapsed={isCollapsed}
-                    />
-                ))}
-            </div>
-
-            <div className={`${isCollapsed ? "hidden" : "block"} mt-auto mb-10`}>
-                <p className="text-center text-xs text-gray-500">
-                    &copy; 2025 THE BREETH
-                </p>
-            </div>
+            {/* Backdrop */}
+            {isSidebarVisible && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+                    onClick={toggleSidebar}
+                />
+            )}
         </div>
     );
 };
+
+export default Sidebar;  // Default export here
