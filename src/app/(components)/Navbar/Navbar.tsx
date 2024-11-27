@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 
 import { setIsDarkMode } from "@/state";
-import { Bell, Link, Moon, Settings, Sun } from "lucide-react";
+import { Bell, Moon, Sun } from "lucide-react";
 
 export const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
     const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
     return (
         <div className="flex justify-between items-center w-full mb-7 bg-white shadow-md px-4 py-3 md:px-6">
             <div className="flex items-center gap-4 relative flex-grow max-w-sm mr-4 md:mr-6">
-                {/* Toggle Sidebar Button */}
+
                 <button
                     onClick={toggleSidebar}
                     className="p-2 bg-gray-800 text-white rounded md:hidden"
