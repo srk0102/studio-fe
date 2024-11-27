@@ -1,16 +1,11 @@
 "use client";
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
-import Link from "next/link";
 
 import { setIsDarkMode } from "@/state";
-import { Bell, Moon, Settings, Sun } from "lucide-react";
+import { Bell, Link, Moon, Settings, Sun } from "lucide-react";
 
-interface NavbarProps {
-    toggleSidebar: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
+export const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
     const dispatch = useAppDispatch();
     const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
@@ -21,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
     return (
         <div className="flex justify-between items-center w-full mb-7 bg-white shadow-md px-4 py-3 md:px-6">
             <div className="flex items-center gap-4 relative flex-grow max-w-sm mr-4 md:mr-6">
+                {/* Toggle Sidebar Button */}
                 <button
                     onClick={toggleSidebar}
                     className="p-2 bg-gray-800 text-white rounded md:hidden"
@@ -66,10 +62,6 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
                 <div className="flex items-center gap-3 cursor-pointer">
                     <span className="font-semibold">User</span>
                 </div>
-
-                <Link href="/settings">
-                    <Settings className="cursor-pointer text-gray-500" size={24} />
-                </Link>
             </div>
         </div>
     );
