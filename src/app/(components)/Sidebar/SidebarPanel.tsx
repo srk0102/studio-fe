@@ -9,7 +9,7 @@ export const SidebarPanel = ({
     icon: Icon,
     label,
     isCollapsed,
-    customClass = "py-4", 
+    customClass = "py-4",
 }: SidebarPanelProps & { customClass?: string }) => {
     const pathname = usePathname();
     const isActive =
@@ -33,5 +33,5 @@ export const SidebarPanel = ({
         </Link>
     );
 };
- 
+
 export default SidebarPanel;
