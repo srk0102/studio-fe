@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import Link from "next/link";
-
 import { setIsDarkMode } from "@/state";
 import { Bell, Moon, Settings, Sun } from "lucide-react";
 
-export const Navbar = () => {
+interface NavbarProps {
+    toggleSidebar: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
     const dispatch = useAppDispatch();
     const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-
-    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
     const toggleDarkMode = () => {
         dispatch(setIsDarkMode(!isDarkMode));
@@ -20,6 +20,26 @@ export const Navbar = () => {
     return (
         <div className="flex justify-between items-center w-full mb-7 bg-white shadow-md px-4 py-3 md:px-6">
             <div className="flex items-center gap-4 relative flex-grow max-w-sm mr-4 md:mr-6">
+                <button
+                    onClick={toggleSidebar}
+                    className="p-2 bg-gray-800 text-white rounded md:hidden"
+                    aria-label="Toggle Sidebar"
+                >
+                    <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                </button>
 
                 <input
                     type="search"

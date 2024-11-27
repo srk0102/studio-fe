@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import {
     Archive,
     CircleDollarSign,
@@ -37,26 +36,6 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) =>
             >
                 <div className="flex items-center justify-between gap-4 py-4 px-6">
                     <h1 className="font-extrabold text-2xl">THE BREETH</h1>
-                    <button
-                        onClick={toggleSidebar}
-                        className="p-2 bg-gray-800 text-white rounded md:hidden"
-                        aria-label="Toggle Sidebar"
-                    >
-                        <svg
-                            className="w-6 h-6"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
-                    </button>
                 </div>
 
                 <div className="flex-grow mt-8">
@@ -88,4 +67,4 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarVisible, toggleSidebar }) =>
     );
 };
 
-export default Sidebar; 
+export default Sidebar;

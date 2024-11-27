@@ -6,3 +6,4 @@ export interface SidebarPanelProps {
     label: string;
     isCollapsed: boolean;
 }
+export { default } from "./Sidebar";
